@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Lynn - David's Mighty Men Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="icon.png">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-image: url('Portfolio.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #374151;
+            overflow-y: scroll;
+        }
+
+        .project-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1.20rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #4649ff, #3352ff);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(to right, #4649ff, #3352ff);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px -2p x rgba(0, 0, 0, 0.15), 0 3px 6px -2px rgba(0, 0, 0, 0.08);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-down {
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            /* For A4 aspect ratio (210mm x 297mm or 1:1.414) we'll use a common doc ratio like 1:1.294 (8.5x11) */
+            padding-bottom: 129.4%; /* 1 / 0.772 * 100% */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #000; /* Black background for contrast */
+        }
+
+        .video-label {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 0.75rem;
+            padding: 0 1rem;
+        }
+        
+        .carousel-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            opacity: 0; /* Use opacity for transition */
+            transition: opacity 0.5s ease-in-out;
+            background-color: #000;
+        }
+        .carousel-slide.active {
+            display: block;
+            opacity: 1;
+        }
+        .carousel-slide img,
+        .carousel-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures the image fits within the container while maintaining aspect ratio */
+            border-radius: 0.75rem;
+            cursor: pointer;
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.75rem 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s ease;
+        }
+        .carousel-nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .carousel-nav-btn.prev {
+            left: 0.5rem;
+        }
+        .carousel-nav-btn.next {
+            right: 0.5rem;
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            border-bottom-left-radius: 1.25rem;
+            border-bottom-right-radius: 1.25rem;
+        }
+        .navbar-link {
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 1.35rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }
+        .navbar-link:hover {
+            background-color: #e2e8f0;
+            color: #2d3748;
+            font-size: 1.35rem;
+        }
+        .navbar-link.active {
+            background: linear-gradient(to right, #4649ff, #3352ff);
+            color: white;
+            font-size: 1.35rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-table {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-collapse: separate;
+            border-spacing: 0 1rem;
+        }
+        .info-table td {
+            padding: 1rem 0;
+        }
+        .info-label {
+            font-weight: 700;
+            color: #1f2937;
+            width: 30%;
+            font-size: 1.3rem;
+        }
+        .info-value {
+            color: #374151;
+            font-weight: 500;
+            width: 70%;
+            font-size: 1.3rem;
+        }
+
+        /* Styles for the fullscreen overlay/modal */
+        .fullscreen-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 5000;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-content {
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-content img {
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            max-height: 100vh; /* Max height is viewport height */
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 5001;
+            padding: 10px;
+            line-height: 1;
+        }
+
+        /* Styles for the project thumbnails/images outside of carousels to be clickable */
+        .project-thumbnail {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="fullscreenOverlay" class="fullscreen-overlay" onclick="closeFullscreen()">
+        <span class="close-btn" onclick="closeFullscreen()">&times;</span>
+        <div id="fullscreenContent" class="fullscreen-content">
+            <img id="fullscreenImage" src="" alt="Full Screen Image">
+        </div>
+    </div>
+
+    <div class="min-h-screen flex flex-col items-center py-24 px-4 sm:px-6 lg:px-8 w-full max-w-6xl mx-auto">
+
+        <nav class="navbar w-full py-4 px-6 flex justify-center">
+            <div class="flex space-x-6">
+                <a href="index.html" class="navbar-link active">Work</a>
+                <a href="about.html" class="navbar-link">About</a>
+            </div>
+        </nav>
+
+        <header class="w-full flex flex-col items-center">
+            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
+                    David's Mighty Men (WIP)
+                </h1>
+            </div>
+
+            <div class="w-full mb-24">
+                <img src="Thumbnails/David.png" alt="Thumbnail for David's Mighty Men" class="w-full h-auto rounded-xl shadow-lg project-thumbnail" onclick="openFullscreen('Thumbnails/David.png')">
+            </div>
+            
+            <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
+                <table class="info-table">
+                    <tr>
+                        <td class="info-label">Role:</td>
+                        <td class="info-value">Creative Director, UI Designer, Programmer</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Duration:</td>
+                        <td class="info-value">September 2025 – May 2026 (WIP)</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Team size:</td>
+                        <td class="info-value">6</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Genre:</td>
+                        <td class="info-value">3D Hack N’ Slash Historical</td>
+                    </tr>
+                    <tr>
+                        <td class="info-label">Engine:</td>
+                        <td class="info-value">Unreal Engine</td>
+                    </tr>
+                </table>
+
+                <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
+                    David’s Mighty Men is a 3D Hack N’ Slash Historical game set 3,000 years
+ago in the times of King David’s reign. Currently I lead a team of six people working on
+the project, and it will be released in Spring 2026. I worked on project management, UI
+design, and gameplay programming.
+                </p>
+            </div>
+
+        </header>
+
+        <main class="w-full max-w-5xl">
+            
+            <section id="project-management-section" class="mb-32" style="display: block;">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management</h2>
+                    
+                    <div class="w-full mb-12">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-4">
+                            As Creative Director, I lead a team of six, directing the overall vision for the game while managing each department in terms of their quality. I oversee all aspects of the game’s development, including level design, gameplay mechanics, and artistic direction. I am in constant talks with the producer and leads, making sure the project vision is still in scope so that each department has a clear picture of their tasks for the week. While the producer makes sure that the team can accomplish goals in a specific amount of time, I make sure that all creative goals are met, having the final say on the result of what’s being made, including art, assets, mechanics, story, and more. I am also heavily involved in designing the documentation, including the GDD, ASG, Gantt charts, team contracts and more. Additionally, I am responsible for conducting playtesting sessions as development goes on, making playtesting reports and hearing feedback from testers and iterating that feedback into production. Here are some of my contributions as Creative Director.
+                        </p>
+                        
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Game Design Document (GDD) Screenshots</h3>
+                        <div id="gdd-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="DavidDock/GDD_1.png" alt="GDD Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="DavidDock/GDD_2.png" alt="GDD Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="DavidDock/GDD_3.png" alt="GDD Screenshot 3" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="3">
+                                <img src="DavidDock/GDD_4.png" alt="GDD Screenshot 4" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="4">
+                                <img src="DavidDock/GDD_5.png" alt="GDD Screenshot 5" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('gdd-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('gdd-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="gdd-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('gdd-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 4)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Art Style Guide (ASG) Screenshots</h3>
+                        <div id="asg-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="DavidDock/ASG_1.png" alt="ASG Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="DavidDock/ASG_2.png" alt="ASG Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="2">
+                                <img src="DavidDock/ASG_3.png" alt="ASG Screenshot 3" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="3">
+                                <img src="DavidDock/ASG_4.png" alt="ASG Screenshot 4" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('asg-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('asg-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="asg-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('asg-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+           <section id="gameplay-programming-section" class="mb-32">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Gameplay Programming</h2>
+
+                    <div class="w-full max-w-4xl mx-auto mb-12">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Gameplay Programming Video</h3>
+                        <div class="relative pt-[56.25%] w-full h-0">
+                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                                src="https://www.youtube.com/embed/uw2Y_--RW28?si=j11315Z2XvkuZPtT" 
+                                title="YouTube video player - Gameplay Programming" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="w-full mb-12 max-w-4xl">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            In the prototyping phase, I was tasked with developing systems related to our core gameplay mechanics. In the 2 week window we were given, I was able to successfully program all player movement and mechanics, providing the foundation for player engagement. These systems include:
+                        </p>
+                        <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 leading-relaxed ml-4">
+                            <li><strong>Player movement:</strong> Basic walk to run function, synced up nicely with animation blend trees.</li>
+                            <li><strong>Shielding:</strong> Player raises their shield to block incoming attacks.</li>
+                            <li><strong>Strafing:</strong> With shield raised, player moves at a set speed with rotation locked.</li>
+                            <li><strong>Dodging:</strong> Player performs quick movement displacement over a certain distance, depending on direction of controller.</li>
+                            <li><strong>Lock On:</strong> Orients player camera towards an enemy when toggled. Disabled by toggle/walking away from target.</li>
+                            <li><strong>Quick attacks:</strong> Short, quick swings dealing decent damage. A 1.5 second timer is fired for each time the player presses the Quick Attack input, giving them a short window of time before their combo resets. These attacks finish with a powerful ground strike.</li>
+                            <li><strong>Strong attacks:</strong> Longer, slower swings that use more of the player’s momentum but do a lot of damage. A 1.5 second timer is fired for each time the player presses the Quick Attack input, giving them a short window of time before their combo resets. These attacks finish with a powerful aerial strike.</li>
+                            <li><strong>Combining attacks:</strong> Players can switch between Quick and Strong Attacks mid combo, giving more freedom of expression and allowing more options for the player to experiment with, creating fun and engaging combat.</li>
+                            <li><strong>Charge Attack:</strong> Long buildup releases a powerful swing, dealing a lot of damage.</li>
+                            <li><strong>Divine intervention:</strong> When Divine Meter is full, player can call down powerful strike, devastating their opponents as an engaging cinematic plays.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <hr class="my-24 border-t-2 border-gray-300">
+            
+            <section id="ui-design-section" class="mb-32">
+                <div class="project-card p-12 flex flex-col items-center">
+                    <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">UI Design</h2>
+
+                    <div class="w-full max-w-4xl mx-auto mb-12">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">UI Video</h3>
+                        <div class="relative pt-[56.25%] w-full h-0">
+                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                                src="https://www.youtube.com/embed/4Etu7GeNgwc?si=-9I8s4NLXi48SDYe" 
+                                title="YouTube video player - UI Design" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                    <div class="w-full mb-12 max-w-4xl">
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            As UI Designer, I implemented all UI elements in game, ensuring seamless player interaction. I utilized Unreal Engine's CommonUI plugin to accomplish all my intended UI goals for the game. This game challenged me more than any other in my journey with UI Design so far, and it ended up being very fun to make. My contributions for UI design include:
+                        </p>
+                        <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 leading-relaxed ml-4">
+                            <li><strong>Main Menu:</strong> Button layouts for Start, Continue, Settings, Credits, and Quit with live menu background implemented.</li>
+                            <li><strong>Settings Menu:</strong> Options to change video settings, audio settings, and view controls and combo lists.</li>
+                            <li><strong>Video Settings:</strong> Options to change Resolution, Window Mode, Vsync, Frame Rate, and Graphics settings. These settings save once you apply them, with the option to reset to default implemented as well.</li>
+                            <li><strong>Audio Settings:</strong> Options to change audio settings, including SFX, Music, and Voice Lines. These settings save once you apply them, with the option to reset to default implemented as well.</li>
+                            <li><strong>Level Select:</strong> Select which level you want to play once you start the game.</li>
+                            <li><strong>Pause Menu:</strong> Sets the game paused and gives options to Continue, view Settings, or Quit to Main Menu.</li>
+                            <li><strong class="text-indigo-600">All menus are fully controller compatible.</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+
+        <hr class="my-24 border-t-2 border-gray-300">
+        <section id="reflection-section" class="mb-24">
+            <div class="project-card p-12 flex flex-col items-center">
+                <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
+                <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left">
+                    This project so far has been the largest undertaking of anything I’ve been a part of in my game development career. Being the leader over a multi-semester project in my capstone class complete with a full production cycle has been the best learning experience I’ve had in university. It’s not only helped me become a more well-rounded game developer but has also strengthened my leadership skills and style significantly. It’s also helped me see just how much really goes into production of a studio led game.
+                </p>
+            </div>
+        </section>
+        </main>
+
+        <footer class="mt-24 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
+            <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
+            <p>Project Leader, University of Central Florida</p>
+        </footer>
+    </div>
+
+    <script>
+        // Global function to manage slide index
+        const slideIndices = {
+            'gdd-carousel': 0,
+            'asg-carousel': 0
+        };
+
+        // Function to show a specific slide
+        function showSlide(carouselId, n) {
+            const carousel = document.getElementById(carouselId);
+            const slides = carousel.getElementsByClassName('carousel-slide');
+            const dots = document.getElementById(carouselId.replace('-carousel', '-dots')).getElementsByClassName('carousel-dot');
+            const totalSlides = slides.length;
+
+            if (n >= totalSlides) {
+                slideIndices[carouselId] = 0;
+            } else if (n < 0) {
+                slideIndices[carouselId] = totalSlides - 1;
+            } else {
+                slideIndices[carouselId] = n;
+            }
+
+            // Hide all slides and remove active class from dots
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].classList.remove('active');
+                dots[i].classList.remove('active');
+            }
+
+            // Show the current slide and activate the current dot
+            slides[slideIndices[carouselId]].classList.add('active');
+            dots[slideIndices[carouselId]].classList.add('active');
+        }
+
+        // Functions to move to next or previous slide
+        function nextSlide(carouselId) {
+            showSlide(carouselId, slideIndices[carouselId] + 1);
+        }
+
+        function prevSlide(carouselId) {
+            showSlide(carouselId, slideIndices[carouselId] - 1);
+        }
+
+        // Function to go to a specific dot's slide
+        function currentSlide(carouselId, n) {
+            showSlide(carouselId, n);
+        }
+
+        // Fullscreen Modal Functions (existing)
+        function openFullscreen(imageSrc) {
+            document.getElementById('fullscreenImage').src = imageSrc;
+            document.getElementById('fullscreenOverlay').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when fullscreen
+        }
+
+        function closeFullscreen() {
+            document.getElementById('fullscreenOverlay').style.display = 'none';
+            document.body.style.overflow = 'scroll'; // Re-enable scrolling
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                closeFullscreen();
+            }
+        });
+
+        // Initialize carousels on load
+        window.onload = function() {
+            showSlide('gdd-carousel', 0);
+            showSlide('asg-carousel', 0);
+        };
+    </script>
+</body>
+</html>

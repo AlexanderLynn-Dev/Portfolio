@@ -397,40 +397,6 @@
                         </div>
                     </div>
 
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Game Design / Art Style Guide (GDD/ASG) Screenshots</h3>
-                        <div id="gddasg-carousel" class="carousel-container mx-auto">
-                            <div class="carousel-slide active" data-index="0">
-                                <img src="FishyDoc/GDD+ASG_1.png" alt="GDD/ASG Screenshot 1" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="1">
-                                <img src="FishyDoc/GDD+ASG_2.png" alt="GDD/ASG Screenshot 2" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="2">
-                                <img src="FishyDoc/GDD+ASG_3.png" alt="GDD/ASG Screenshot 3" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="3">
-                                <img src="FishyDoc/GDD+ASG_4.png" alt="GDD/ASG Screenshot 4" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="4">
-                                <img src="FishyDoc/GDD+ASG_5.png" alt="GDD/ASG Screenshot 5" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="5">
-                                <img src="FishyDoc/GDD+ASG_6.png" alt="GDD/ASG Screenshot 6" onclick="openFullscreen(this.src)">
-                            </div>
-                            <button class="carousel-nav-btn prev" onclick="prevSlide('gddasg-carousel')">&#10094;</button>
-                            <button class="carousel-nav-btn next" onclick="nextSlide('gddasg-carousel')">&#10095;</button>
-                            <div class="carousel-dots" id="gddasg-dots">
-                                <span class="carousel-dot active" onclick="currentSlide('gddasg-carousel', 0)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 1)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 2)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 3)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 4)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gddasg-carousel', 5)"></span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
             
@@ -545,8 +511,7 @@
     <script>
         // Global function to manage slide index
         const slideIndices = {
-            'backlog-carousel': 0,
-            'gddasg-carousel': 0
+            'backlog-carousel': 0
         };
 
         // Function to show a specific slide
@@ -623,7 +588,6 @@
         // Initialize carousels on load
         window.onload = function() {
             showSlide('backlog-carousel', 0);
-            showSlide('gddasg-carousel', 0);
         };
     </script>
 </body>

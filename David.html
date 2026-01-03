@@ -281,13 +281,20 @@
 
         <header class="w-full flex flex-col items-center">
             <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
-                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
-                    David's Mighty Men (WIP)
-                </h1>
+                <img src="David/TITLE.png" alt="David's Mighty Men" class="w-full h-auto mb-4">
             </div>
 
             <div class="w-full mb-24">
-                <img src="Thumbnails/David.png" alt="Thumbnail for David's Mighty Men" class="w-full h-auto rounded-xl shadow-lg project-thumbnail" onclick="openFullscreen('Thumbnails/David.png')">
+                <div class="relative pt-[56.25%] w-full h-0">
+                    <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                        src="https://www.youtube.com/embed/hBYvHdHxsGY?si=FqTyh9-CjBx-Cu9n" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
             
             <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
@@ -315,10 +322,10 @@
                 </table>
 
                 <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
-                    David’s Mighty Men is a 3D Hack N’ Slash Historical game set 3,000 years
-ago in the times of King David’s reign. Currently I lead a team of six people working on
-the project, and it will be released in Spring 2026. I worked on project management, UI
-design, and gameplay programming.
+                    David's Mighty Men is a 3D Hack N' Slash Historical game set 3,000 years ago in the
+                    times of King David's reign. I led a team of six during the game's first three months of
+                    development up until vertical slice. I worked on project management, UI design, and
+                    gameplay programming.
                 </p>
             </div>
 
@@ -341,28 +348,16 @@ design, and gameplay programming.
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Game Design Document (GDD) Screenshots</h3>
                         <div id="gdd-carousel" class="carousel-container mx-auto">
                             <div class="carousel-slide active" data-index="0">
-                                <img src="DavidDock/GDD_1.png" alt="GDD Screenshot 1" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/GDD-1.png" alt="GDD Screenshot 1" onclick="openFullscreen(this.src)">
                             </div>
                             <div class="carousel-slide" data-index="1">
-                                <img src="DavidDock/GDD_2.png" alt="GDD Screenshot 2" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="2">
-                                <img src="DavidDock/GDD_3.png" alt="GDD Screenshot 3" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="3">
-                                <img src="DavidDock/GDD_4.png" alt="GDD Screenshot 4" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="4">
-                                <img src="DavidDock/GDD_5.png" alt="GDD Screenshot 5" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/GDD-2.png" alt="GDD Screenshot 2" onclick="openFullscreen(this.src)">
                             </div>
                             <button class="carousel-nav-btn prev" onclick="prevSlide('gdd-carousel')">&#10094;</button>
                             <button class="carousel-nav-btn next" onclick="nextSlide('gdd-carousel')">&#10095;</button>
                             <div class="carousel-dots" id="gdd-dots">
                                 <span class="carousel-dot active" onclick="currentSlide('gdd-carousel', 0)"></span>
                                 <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 1)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 2)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 3)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('gdd-carousel', 4)"></span>
                             </div>
                         </div>
                     </div>
@@ -371,24 +366,34 @@ design, and gameplay programming.
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Art Style Guide (ASG) Screenshots</h3>
                         <div id="asg-carousel" class="carousel-container mx-auto">
                             <div class="carousel-slide active" data-index="0">
-                                <img src="DavidDock/ASG_1.png" alt="ASG Screenshot 1" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/ASG-1.png" alt="ASG Screenshot 1" onclick="openFullscreen(this.src)">
                             </div>
                             <div class="carousel-slide" data-index="1">
-                                <img src="DavidDock/ASG_2.png" alt="ASG Screenshot 2" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="2">
-                                <img src="DavidDock/ASG_3.png" alt="ASG Screenshot 3" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="3">
-                                <img src="DavidDock/ASG_4.png" alt="ASG Screenshot 4" onclick="openFullscreen(this.src)">
+                                <img src="DavidDock/ASG-2.png" alt="ASG Screenshot 2" onclick="openFullscreen(this.src)">
                             </div>
                             <button class="carousel-nav-btn prev" onclick="prevSlide('asg-carousel')">&#10094;</button>
                             <button class="carousel-nav-btn next" onclick="nextSlide('asg-carousel')">&#10095;</button>
                             <div class="carousel-dots" id="asg-dots">
                                 <span class="carousel-dot active" onclick="currentSlide('asg-carousel', 0)"></span>
                                 <span class="carousel-dot" onclick="currentSlide('asg-carousel', 1)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 2)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('asg-carousel', 3)"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Playtesting Report Screenshots</h3>
+                        <div id="playtest-carousel" class="carousel-container mx-auto">
+                            <div class="carousel-slide active" data-index="0">
+                                <img src="DavidDock/Playtest Form Screenshot 1.png" alt="Playtest Form Screenshot 1" onclick="openFullscreen(this.src)">
+                            </div>
+                            <div class="carousel-slide" data-index="1">
+                                <img src="DavidDock/Playtest Form Screenshot 2.png" alt="Playtest Form Screenshot 2" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('playtest-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('playtest-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="playtest-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('playtest-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('playtest-carousel', 1)"></span>
                             </div>
                         </div>
                     </div>
@@ -430,6 +435,20 @@ design, and gameplay programming.
                             <li><strong>Charge Attack:</strong> Long buildup releases a powerful swing, dealing a lot of damage.</li>
                             <li><strong>Divine intervention:</strong> When Divine Meter is full, player can call down powerful strike, devastating their opponents as an engaging cinematic plays.</li>
                         </ul>
+                        <p class="text-lg text-gray-700 leading-relaxed mt-6">
+                            I was able to successfully build upon all of these mechanics and program them to the
+                            standard I wanted for vertical slice, which you can check out here:
+                        </p>
+                        <div class="relative pt-[56.25%] w-full h-0 mt-6">
+                            <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                                src="https://www.youtube.com/embed/hBYvHdHxsGY?si=up2vX9LnAziZsRsf" 
+                                title="YouTube video player" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                referrerpolicy="strict-origin-when-cross-origin" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -444,8 +463,8 @@ design, and gameplay programming.
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">UI Video</h3>
                         <div class="relative pt-[56.25%] w-full h-0">
                             <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                                src="https://www.youtube.com/embed/4Etu7GeNgwc?si=-9I8s4NLXi48SDYe" 
-                                title="YouTube video player - UI Design" 
+                                src="https://www.youtube.com/embed/Prvnm0YDfbA?si=-VaIDMtEO-TgOoGn" 
+                                title="YouTube video player" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 referrerpolicy="strict-origin-when-cross-origin" 
@@ -462,6 +481,7 @@ design, and gameplay programming.
                             <li><strong>Settings Menu:</strong> Options to change video settings, audio settings, and view controls and combo lists.</li>
                             <li><strong>Video Settings:</strong> Options to change Resolution, Window Mode, Vsync, Frame Rate, and Graphics settings. These settings save once you apply them, with the option to reset to default implemented as well.</li>
                             <li><strong>Audio Settings:</strong> Options to change audio settings, including SFX, Music, and Voice Lines. These settings save once you apply them, with the option to reset to default implemented as well.</li>
+                            <li><strong>Sensitivity Settings:</strong> Options to adjust mouse and controller sensitivity. These settings save once you apply them, with the option to reset to default implemented as well.</li>
                             <li><strong>Level Select:</strong> Select which level you want to play once you start the game.</li>
                             <li><strong>Pause Menu:</strong> Sets the game paused and gives options to Continue, view Settings, or Quit to Main Menu.</li>
                             <li><strong class="text-indigo-600">All menus are fully controller compatible.</strong></li>
@@ -476,7 +496,26 @@ design, and gameplay programming.
             <div class="project-card p-12 flex flex-col items-center">
                 <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Reflection</h2>
                 <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left">
-                    This project so far has been the largest undertaking of anything I’ve been a part of in my game development career. Being the leader over a multi-semester project in my capstone class complete with a full production cycle has been the best learning experience I’ve had in university. It’s not only helped me become a more well-rounded game developer but has also strengthened my leadership skills and style significantly. It’s also helped me see just how much really goes into production of a studio led game.
+                    When I first started this project, I wanted to blend the worlds of faith and video games
+                    together to create something truly unique. There are several awesome stories told in the
+                    Bible that can be made into games, and this is just one of them. I wanted to make a
+                    game centered around a biblical story that would be fun for all types of players to enjoy.
+                    I honestly didn't think an idea like this would even get past the pitch, let alone make it to
+                    vertical slice! To say I learned a lot from this experience would be a huge
+                    understatement.
+                </p>
+                <p class="text-lg text-gray-700 leading-relaxed max-w-2xl mx-auto text-left mt-6">
+                    As development progressed, I continued to challenge myself every day, learning a lot
+                    about team leadership, programming, UI design, and other aspects of game
+                    development. Most importantly, I learned to keep pushing on despite the many
+                    obstacles that came our way and the deadlines we were under. With a team of six and
+                    only three months practicing full production cycles, everyone had to carry on multiple
+                    roles and get out of their comfort zones in order to keep up the pace. I juggled the
+                    responsibilities of a project leader, vision holder, player programmer, UI designer,
+                    scriptwriter, motion capture actor, organizing voice recording sessions, organizing
+                    playtesting sessions, and writing over 54 pages of documentation at once for this
+                    project. Given the circumstances, I'm very proud of what we were able to accomplish
+                    and I am excited to continue working on the project in the future!
                 </p>
             </div>
         </section>
@@ -492,7 +531,8 @@ design, and gameplay programming.
         // Global function to manage slide index
         const slideIndices = {
             'gdd-carousel': 0,
-            'asg-carousel': 0
+            'asg-carousel': 0,
+            'playtest-carousel': 0
         };
 
         // Function to show a specific slide
@@ -558,6 +598,7 @@ design, and gameplay programming.
         window.onload = function() {
             showSlide('gdd-carousel', 0);
             showSlide('asg-carousel', 0);
+            showSlide('playtest-carousel', 0);
         };
     </script>
 </body>

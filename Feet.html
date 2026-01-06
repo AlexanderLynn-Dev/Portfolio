@@ -224,13 +224,20 @@
 
         <header class="w-full flex flex-col items-center">
             <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
-                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-4 leading-tight tracking-tight">
-                    On Your Feet! (WIP)
-                </h1>
+                <img src="Feet/Images/On Your Feet Title.png" alt="On Your Feet!" class="w-full h-auto mb-4">
             </div>
 
             <div class="w-full mb-24">
-                <img src="Thumbnails/Feet.png" alt="Thumbnail for On Your Feet!" class="w-full h-auto rounded-xl shadow-lg cursor-pointer" onclick="openFullscreen('Thumbnails/Feet.png')">
+                <div class="relative pt-[56.25%] w-full h-0">
+                    <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                        src="https://www.youtube.com/embed/yz1yWYw2ovc?si=osa02QlmynUIL6fm" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
             
             <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
@@ -355,7 +362,7 @@
 
         <footer class="mt-24 text-center text-gray-600 text-sm" style="color:rgba(0, 0, 0, 1)">
             <p>&copy; 2025 Alexander Lynn. All rights reserved.</p>
-            <p>Project Leader, University of Central Florida</p>
+            <p>Technical Designer, University of Central Florida</p>
         </footer>
     </div>
 

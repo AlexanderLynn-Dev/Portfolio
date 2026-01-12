@@ -117,11 +117,19 @@
         /* Adjusted for larger comparison section */
         .level-comparison-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two columns for image and video */
+            grid-template-columns: 1fr 1fr 1fr; /* Three columns for sketch, iteration, and final */
             gap: 1.5rem;
             align-items: flex-start;
             margin-bottom: 1.5rem;
             width: 100%;
+        }
+
+        /* Responsive adjustment for Spain (2 items) */
+        .level-comparison-container.two-items {
+            grid-template-columns: 1fr 1fr;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .media-item {
@@ -403,11 +411,15 @@
                         </p>
                     </div>
 
-                    <div class="w-full max-w-4xl mx-auto mb-16"> <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 1: Portugal (Port 1-1)</h3>
+                    <div class="w-full max-w-5xl mx-auto mb-16"> <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 1: Portugal (Port 1-1)</h3>
                         <div class="level-comparison-container">
                             <div class="media-item">
                                 <img src="Feet/Port 1-1.png" alt="Port 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Port 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <video src="Feet/Port 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Second Iteration</p>
                             </div>
                             <div class="media-item" onclick="event.stopPropagation();">
                                 <iframe src="https://www.youtube.com/embed/g0JroU1hTWo?si=DitwVWxtG0eJ04Am" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -419,12 +431,16 @@
                         </p>
                     </div>
 
-                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                    <div class="w-full max-w-5xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 2: Italy (Italy 1-1)</h3>
                         <div class="level-comparison-container">
                             <div class="media-item">
                                 <img src="Feet/Italy 1-1.png" alt="Italy 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Italy 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <video src="Feet/Italy 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Second Iteration</p>
                             </div>
                             <div class="media-item" onclick="event.stopPropagation();">
                                 <iframe src="https://www.youtube.com/embed/SmCGDtTd8jc?si=Rgz7PLXB7G-zZAlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -436,12 +452,16 @@
                         </p>
                     </div>
 
-                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                    <div class="w-full max-w-5xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 3: France (France 1-1)</h3>
                         <div class="level-comparison-container">
                             <div class="media-item">
                                 <img src="Feet/France 1-1.png" alt="France 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/France 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <video src="Feet/France 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <p class="label">Second Iteration</p>
                             </div>
                             <div class="media-item" onclick="event.stopPropagation();">
                                 <iframe src="https://www.youtube.com/embed/KmWrNfCzR04?si=FBG7B_qJ1X4huWFs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -453,9 +473,9 @@
                         </p>
                     </div>
 
-                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                    <div class="w-full max-w-5xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
                         <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 4: Spain (Spain 1-1)</h3>
-                        <div class="level-comparison-container">
+                        <div class="level-comparison-container two-items">
                             <div class="media-item">
                                 <img src="Feet/Spain 1-1.png" alt="Spain 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Spain 1-1.png')">
                                 <p class="label">Initial Concept Sketch</p>
@@ -466,7 +486,7 @@
                             </div>
                         </div>
                         <p class="text-md text-gray-700 leading-relaxed text-left">
-                            The player utilizes the newly unlocked "Backheel" ability to strike a button that is otherwise unreachable with a standard kick, activating a necessary platform. They must navigate past crates topped with spikes and defeat an enemy to obtain a key for the first door. After unlocking it, they break a pot to find another key and use a Charge Kick to maneuver a crate onto a pressure plate, which activates a platform leading to a second locked door. The level then introduces a reverse gravity mechanic; the player must jump across breakable platforms and use an Aim Kick to hit a button that deactivates anti-gravity. After another Backheel maneuver, they navigate across platforms that disappear upon contact to finally reach the checkpoint.
+                            Using the new ability, Backheel, the player presses a button that can't be reached with a regular kick, and activates a necessary platform. Then, they have to get past some spike top crates, and defeat one enemy to get a key for the first door. After unlocking it, they smash a pot to get another key and do a Charge Kick to slide a crate onto a pressure plate, which activates a platform that allows access to the second locked door. After that, the level introduces the reverse gravity mechanic. The player has to jump over some breakable platforms and use an Aim Kick to press a button that turns off the anti-gravity. After another Backheel, they get to the platforms that vanish when stepped on, and reach the final checkpoint.
                         </p>
                     </div>
 

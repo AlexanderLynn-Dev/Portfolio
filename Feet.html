@@ -137,7 +137,8 @@
             cursor: pointer; /* Add pointer cursor for clickability */
         }
         .media-item img,
-        .media-item video {
+        .media-item video,
+        .media-item iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -201,6 +202,66 @@
             z-index: 5001;
             padding: 10px;
             line-height: 1;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 1rem;
+            background-color: #f3f4f6;
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            position: relative;
+        }
+        .carousel-slide img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: #000;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: background-color 0.3s;
+        }
+        .carousel-btn:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        .carousel-counter {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -286,6 +347,47 @@
                         </p>
                     </div>
 
+                    <div class="w-full mb-12">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Initial Storyboard Sketches</h3>
+                        <div class="carousel-container max-w-4xl mx-auto shadow-2xl">
+                            <div class="carousel-track" id="carouselTrack">
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 1.png" alt="Sketch 1" onclick="openFullscreen('Feet/Sketch 1.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 2.png" alt="Sketch 2" onclick="openFullscreen('Feet/Sketch 2.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 3.png" alt="Sketch 3" onclick="openFullscreen('Feet/Sketch 3.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 4.png" alt="Sketch 4" onclick="openFullscreen('Feet/Sketch 4.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 5.png" alt="Sketch 5" onclick="openFullscreen('Feet/Sketch 5.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 6.png" alt="Sketch 6" onclick="openFullscreen('Feet/Sketch 6.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 7.png" alt="Sketch 7" onclick="openFullscreen('Feet/Sketch 7.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 8.png" alt="Sketch 8" onclick="openFullscreen('Feet/Sketch 8.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 9.png" alt="Sketch 9" onclick="openFullscreen('Feet/Sketch 9.png')">
+                                </div>
+                                <div class="carousel-slide">
+                                    <img src="Feet/Sketch 10.png" alt="Sketch 10" onclick="openFullscreen('Feet/Sketch 10.png')">
+                                </div>
+                            </div>
+                            <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+                            <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+                            <div class="carousel-counter" id="carouselCounter">1 / 10</div>
+                        </div>
+                    </div>
+
     
                 </div>
             </section>
@@ -308,7 +410,7 @@
                                 <p class="label">Initial Concept Sketch</p>
                             </div>
                             <div class="media-item" onclick="event.stopPropagation();">
-                                <video src="Feet/Port 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <iframe src="https://www.youtube.com/embed/g0JroU1hTWo?si=DitwVWxtG0eJ04Am" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 <p class="label">Completed Level Gameplay</p>
                             </div>
                         </div>
@@ -325,7 +427,7 @@
                                 <p class="label">Initial Concept Sketch</p>
                             </div>
                             <div class="media-item" onclick="event.stopPropagation();">
-                                <video src="Feet/Italy 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <iframe src="https://www.youtube.com/embed/SmCGDtTd8jc?si=Rgz7PLXB7G-zZAlk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 <p class="label">Completed Level Gameplay</p>
                             </div>
                         </div>
@@ -342,12 +444,29 @@
                                 <p class="label">Initial Concept Sketch</p>
                             </div>
                             <div class="media-item" onclick="event.stopPropagation();">
-                                <video src="Feet/France 1-1.mp4" autoplay loop playsinline controls muted loading="lazy"></video>
+                                <iframe src="https://www.youtube.com/embed/KmWrNfCzR04?si=FBG7B_qJ1X4huWFs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 <p class="label">Completed Level Gameplay</p>
                             </div>
                         </div>
                         <p class="text-md text-gray-700 leading-relaxed text-left">
                             The player uses the Aim Kick to reach a button, then uses it again to hit a moving switch. They must avoid enemies, bounce the ball off the ceiling to hit a switch, and then jump on a series of breakable platforms to evade more enemies. The player jumps onto a moving platform and hits a switch with the correct timing. After that, they hit a different switch to rotate platforms that have spikes on the bottom. The level concludes with the player riding an auto-scrolling platform while dodging enemies and hitting switches, thereby reaching the goal.
+                        </p>
+                    </div>
+
+                    <div class="w-full max-w-4xl mx-auto mb-16"> <hr class="my-10 border-t border-gray-300">
+                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">World 4: Spain (Spain 1-1)</h3>
+                        <div class="level-comparison-container">
+                            <div class="media-item">
+                                <img src="Feet/Spain 1-1.png" alt="Spain 1-1 Level Concept" loading="lazy" onclick="openFullscreen('Feet/Spain 1-1.png')">
+                                <p class="label">Initial Concept Sketch</p>
+                            </div>
+                            <div class="media-item" onclick="event.stopPropagation();">
+                                <iframe src="https://www.youtube.com/embed/sAySHCYAXcA?si=9xB6AWEcGQRjdl4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                                <p class="label">Completed Level Gameplay</p>
+                            </div>
+                        </div>
+                        <p class="text-md text-gray-700 leading-relaxed text-left">
+                            The player utilizes the newly unlocked "Backheel" ability to strike a button that is otherwise unreachable with a standard kick, activating a necessary platform. They must navigate past crates topped with spikes and defeat an enemy to obtain a key for the first door. After unlocking it, they break a pot to find another key and use a Charge Kick to maneuver a crate onto a pressure plate, which activates a platform leading to a second locked door. The level then introduces a reverse gravity mechanic; the player must jump across breakable platforms and use an Aim Kick to hit a button that deactivates anti-gravity. After another Backheel maneuver, they navigate across platforms that disappear upon contact to finally reach the checkpoint.
                         </p>
                     </div>
 
@@ -389,6 +508,18 @@
                 closeFullscreen();
             }
         });
+
+        let currentSlide = 0;
+        const totalSlides = 10;
+        const track = document.getElementById('carouselTrack');
+        const counter = document.getElementById('carouselCounter');
+
+        function moveCarousel(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            const offset = -currentSlide * 100;
+            track.style.transform = `translateX(${offset}%)`;
+            counter.innerText = `${currentSlide + 1} / ${totalSlides}`;
+        }
     </script>
 </body>
 </html>

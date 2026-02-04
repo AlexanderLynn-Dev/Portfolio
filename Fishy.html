@@ -189,6 +189,40 @@
             line-height: 1;
         }
 
+        .ui-carousel-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 62.5%; /* 16:10 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #000;
+        }
+
+        .ui-carousel-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            background-color: #000;
+        }
+        .ui-carousel-slide.active {
+            display: block;
+            opacity: 1;
+        }
+        .ui-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            cursor: pointer;
+        }
+
         /* Carousel Styles (Copied from previous implementation) */
         .carousel-container {
             position: relative;
@@ -290,27 +324,11 @@
         </nav>
 
         <header class="w-full flex flex-col items-center">
-            <div class="text-center mb-12 w-full max-w-4xl animate-fade-in-down mt-32">
-                <img src="Fishy/Fishy logo.png" alt="Fishy Business" class="w-full h-auto mb-4">
-            </div>
-
-            <div class="w-full mb-24 max-w-4xl">
+            
+            <div class="w-full mb-24 max-w-4xl mt-32">
                 <img src="Fishy/FB-Poster.png" alt="Fishy Business Poster" class="w-full h-auto rounded-xl shadow-lg main-thumbnail" onclick="openFullscreen('Fishy/FB-Poster.png')">
             </div>
 
-            <div class="w-full mb-24 max-w-4xl">
-                <div class="relative pt-[56.25%] w-full h-0">
-                    <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
-                        src="https://www.youtube.com/embed/sI6E5IZVMcA?si=vhn7FhTovD9LboFG" 
-                        title="YouTube video player" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                        referrerpolicy="strict-origin-when-cross-origin" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-            
             <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
                 <table class="info-table">
                     <tr>
@@ -334,7 +352,23 @@
                         <td class="info-value">Unreal Engine</td>
                     </tr>
                 </table>
+            </div>
 
+            <div class="w-full max-w-4xl mx-auto mb-32">
+                <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Fishy Business Trailer</h3>
+                <div class="relative pt-[56.25%] w-full h-0">
+                    <iframe class="absolute top-0 left-0 w-full h-full rounded-xl shadow-xl" 
+                        src="https://www.youtube.com/embed/sI6E5IZVMcA?si=vhn7FhTovD9LboFG" 
+                        title="Fishy Business Trailer" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="w-full max-w-2xl mx-auto mb-32 project-card p-10">
                 <p class="text-xl text-gray-700 leading-relaxed mx-auto text-left">
                     Fishy Business is a 2D Tower Defense mobile game, set to release in December 2025.
                     Catch fish in the water and sell them to grow your fisherman business and save your
@@ -356,7 +390,7 @@
                 <div class="project-card p-12 flex flex-col items-center">
                     <h2 class="text-4xl font-extrabold text-indigo-700 mb-12 w-full text-center">Project Management & Documentation</h2>
                     
-                    <div class="w-full mb-12">
+                    <div class="w-full">
                         <p class="text-lg text-gray-700 leading-relaxed mb-4">
                             As Producer, I led a team of seven, scheduling meetings and delegating tasks on a
                             weekly basis. I organized a development timeline that ensured each team member
@@ -366,40 +400,7 @@
                             crucial to ensure that all standards are set from the get-go and deadlines are met
                             successfully. Here are my contributions as Producer.
                         </p>
-                        
                     </div>
-
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Development Timeline Screenshot for GDD + ASG</h3>
-                        <div class="carousel-container mx-auto">
-                            <div class="carousel-slide active" data-index="0">
-                                <img src="FishyDoc/FB-GDD+ASG.png" alt="Development Timeline Screenshot for GDD + ASG" onclick="openFullscreen(this.src)">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-full max-w-4xl mx-auto mb-16">
-                        <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">Product Backlog Screenshots</h3>
-                        <div id="backlog-carousel" class="carousel-container mx-auto">
-                            <div class="carousel-slide active" data-index="0">
-                                <img src="FishyDoc/Backlog_1.png" alt="Backlog Screenshot 1" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="1">
-                                <img src="FishyDoc/Backlog_2.png" alt="Backlog Screenshot 2" onclick="openFullscreen(this.src)">
-                            </div>
-                            <div class="carousel-slide" data-index="2">
-                                <img src="FishyDoc/Backlog_3.png" alt="Backlog Screenshot 3" onclick="openFullscreen(this.src)">
-                            </div>
-                            <button class="carousel-nav-btn prev" onclick="prevSlide('backlog-carousel')">&#10094;</button>
-                            <button class="carousel-nav-btn next" onclick="nextSlide('backlog-carousel')">&#10095;</button>
-                            <div class="carousel-dots" id="backlog-dots">
-                                <span class="carousel-dot active" onclick="currentSlide('backlog-carousel', 0)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('backlog-carousel', 1)"></span>
-                                <span class="carousel-dot" onclick="currentSlide('backlog-carousel', 2)"></span>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </section>
             
@@ -419,71 +420,58 @@
                         </p>
                     </div>
 
-                    <div class="w-full mb-12 max-w-4xl">
-
-                        <div class="ui-comparison-container">
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Title.png')">
-                                <img src="Fishy/FB-Title.png" alt="Main Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Main Menu</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    Button layouts for Start, Settings, Shop, and Quit.
-                                </p>
+                    <div class="w-full max-w-4xl mx-auto mb-12">
+                        <div id="ui-carousel" class="ui-carousel-container mx-auto">
+                            <div class="ui-carousel-slide active" data-index="0">
+                                <img src="Fishy/FB-Title.png" alt="Main Menu" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Settings.png')">
-                                <img src="Fishy/FB-Settings.png" alt="Settings Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Settings Menu</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    Options to change certain audio settings in game.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="1">
+                                <img src="Fishy/FB-Settings.png" alt="Settings Menu" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Shop.png')">
-                                <img src="Fishy/FB-Shop.png" alt="Shop Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Shop Menu</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    Buy optional cosmetics with in-game currency.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="2">
+                                <img src="Fishy/FB-Shop.png" alt="Shop Menu" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Lvl-Select.png')">
-                                <img src="Fishy/FB-Lvl-Select.png" alt="Level Select" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Level Select</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    Select which level you want to play once you start the game.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="3">
+                                <img src="Fishy/FB-Lvl-Select.png" alt="Level Select" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-HUD.png')">
-                                <img src="Fishy/FB-HUD.png" alt="In-Game HUD" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">In-Game HUD</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    On the left, displays wave count and lives remaining. On the right,
-                                    displays each selectable fisherman with their value, amount of fish caught, option to sell
-                                    fish, and amount of money the player currently has.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="4">
+                                <img src="Fishy/FB-HUD.png" alt="In-Game HUD" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Upgrade-Menu.png')">
-                                <img src="Fishy/FB-Upgrade-Menu.png" alt="Upgrade Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Upgrade Menu</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    When a fisherman is selected, displays three different upgrades to
-                                    choose from, depending on the fisherman type.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="5">
+                                <img src="Fishy/FB-Upgrade-Menu.png" alt="Upgrade Menu" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Pause-Menu.png')">
-                                <img src="Fishy/FB-Pause-Menu.png" alt="Pause Menu" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Pause Menu</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    Sets the game paused and gives options to Resume, view Settings, or
-                                    Quit to Main Menu.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="6">
+                                <img src="Fishy/FB-Pause-Menu.png" alt="Pause Menu" onclick="openFullscreen(this.src)">
                             </div>
-                            <div class="ui-image-card" onclick="openFullscreen('Fishy/FB-Game-Over.png')">
-                                <img src="Fishy/FB-Game-Over.png" alt="Game Over" loading="lazy">
-                                <h4 class="text-xl font-semibold text-gray-800 mt-4">Game Over</h4>
-                                <p class="text-md text-gray-600 text-center">
-                                    Ends the game and gives options to Continue, Play Again, or Return to
-                                    Main Menu.
-                                </p>
+                            <div class="ui-carousel-slide" data-index="7">
+                                <img src="Fishy/FB-Game-Over.png" alt="Game Over" onclick="openFullscreen(this.src)">
+                            </div>
+                            <button class="carousel-nav-btn prev" onclick="prevSlide('ui-carousel')">&#10094;</button>
+                            <button class="carousel-nav-btn next" onclick="nextSlide('ui-carousel')">&#10095;</button>
+                            <div class="carousel-dots" id="ui-dots">
+                                <span class="carousel-dot active" onclick="currentSlide('ui-carousel', 0)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 1)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 2)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 3)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 4)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 5)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 6)"></span>
+                                <span class="carousel-dot" onclick="currentSlide('ui-carousel', 7)"></span>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="w-full mb-12 max-w-4xl">
+                        <ul class="list-disc list-inside space-y-3 text-lg text-gray-700 leading-relaxed ml-4">
+                            <li><strong>Main Menu:</strong> Button layouts for Start, Settings, Shop, and Quit.</li>
+                            <li><strong>Settings Menu:</strong> Options to change certain audio settings in game.</li>
+                            <li><strong>Shop Menu:</strong> Buy optional cosmetics with in-game currency.</li>
+                            <li><strong>Level Select:</strong> Select which level you want to play once you start the game.</li>
+                            <li><strong>In-Game HUD:</strong> On the left, displays wave count and lives remaining. On the right, displays each selectable fisherman with their value, amount of fish caught, option to sell fish, and amount of money the player currently has.</li>
+                            <li><strong>Upgrade Menu:</strong> When a fisherman is selected, displays three different upgrades to choose from, depending on the fisherman type.</li>
+                            <li><strong>Pause Menu:</strong> Sets the game paused and gives options to Resume, view Settings, or Quit to Main Menu.</li>
+                            <li><strong>Game Over:</strong> Ends the game and gives options to Continue, Play Again, or Return to Main Menu.</li>
+                        </ul>
                     </div>
                 </div>
             </section>
@@ -514,7 +502,8 @@
     <script>
         // Global function to manage slide index
         const slideIndices = {
-            'backlog-carousel': 0
+            'backlog-carousel': 0,
+            'ui-carousel': 0
         };
 
         // Function to show a specific slide
@@ -522,7 +511,8 @@
             const carousel = document.getElementById(carouselId);
             if (!carousel) return;
 
-            const slides = carousel.getElementsByClassName('carousel-slide');
+            const slideClass = carouselId === 'ui-carousel' ? 'ui-carousel-slide' : 'carousel-slide';
+            const slides = carousel.getElementsByClassName(slideClass);
             const dotContainerId = carouselId.replace('-carousel', '-dots');
             const dotContainer = document.getElementById(dotContainerId);
             
@@ -591,6 +581,7 @@
         // Initialize carousels on load
         window.onload = function() {
             showSlide('backlog-carousel', 0);
+            showSlide('ui-carousel', 0);
         };
     </script>
 </body>
